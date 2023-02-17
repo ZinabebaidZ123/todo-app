@@ -1,0 +1,27 @@
+
+
+<!-- {{tasks}} -->
+            <table class="table mb-4">
+              <thead>
+                <tr>
+                  <th scope="col">No.</th>
+                  <th scope="col">Todo item</th>
+
+                  <th scope="col-3">Actions</th>
+                </tr>
+              </thead>
+              <tbody  *ngIf="tasks.length >1">
+                <tr  *ngFor="let task of tasks; let i=index">
+                  <th scope="row">{{i}}</th>
+
+                  <td    [ngClass]="iscomolete?'text-muted':''" >{{task}}</td>
+                  <td>
+                    <button  class="btn btn-danger" (click)="deleteTask(i)"  >Delete</button>
+                    <button class="btn btn-success ms-1"  (click)="completeTask(i)"  [ngClass]="iscomolete?'d-none':'d-inline-block'">Complete</button>
+                    <button  class="btn btn-success ms-1 undo"  (click)="undoTask(i)"  [ngClass]="!iscomolete?'d-none':'d-inline-block'"  >Undo</button>
+                  </td>
+                </tr>
+
+
+              </tbody>
+            </table>
